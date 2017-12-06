@@ -1,7 +1,5 @@
 package main
 
-import "math"
-
 func p11() (greatest int) {
 	mat := [20][20]int{
 		{8, 2, 22, 97, 38, 15, 00, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8},
@@ -26,47 +24,44 @@ func p11() (greatest int) {
 		{1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48},
 	}
 
-	for y := 0; y < 20; y++ {
-		for x := 0; x < 20; x++ {
-			val := math.Max(math.Max(math.Max(float64(valLeft(mat, x, y)), float64(valDown(mat, x, y))), float64(diagLeft(mat, x, y))), float64(diagRight(mat, x, y)))
+	for x := 0; x < 20; x++ {
+		for y := 0; y < 20; y++ {
+			if mat[x][y] == 0 {
+				continue
+			}
 
-			if int(val) > greatest {
-				greatest = int(val)
+			if x <= 16 {
+				val := mat[x][y] * mat[x+1][y] * mat[x+2][y] * mat[x+3][y]
+
+				if val > greatest {
+					greatest = val
+				}
+			}
+
+			if y <= 16 {
+				val := mat[x][y] * mat[x][y+1] * mat[x][y+2] * mat[x][y+3]
+				if val > greatest {
+					greatest = val
+				}
+			}
+
+			if x <= 16 && y <= 16 {
+				val := mat[x][y] * mat[x+1][y+1] * mat[x+2][y+2] * mat[x+3][y+3]
+
+				if val > greatest {
+					greatest = val
+				}
+			}
+
+			if x > 3 && y <= 16 {
+				val := mat[x][y] * mat[x-1][y+1] * mat[x-2][y+2] * mat[x-3][y+3]
+
+				if val > greatest {
+					greatest = val
+				}
 			}
 		}
 	}
 
 	return
-}
-
-func valLeft(grid [20][20]int, x, y int) int {
-	if x+3 < 20 {
-		return grid[x][y] * grid[x+1][y] * grid[x+2][y] * grid[x+3][y]
-	}
-
-	return -1
-}
-
-func valDown(grid [20][20]int, x, y int) int {
-	if y+3 < 20 {
-		return grid[x][y] * grid[x][y+1] * grid[x][y+1] * grid[x][y+1]
-	}
-
-	return -1
-}
-
-func diagRight(grid [20][20]int, x, y int) int {
-	if x+3 < 20 && y+3 < 20 {
-		return grid[x][y] * grid[x+1][y+1] * grid[x+2][y+2] * grid[x+3][y+3]
-	}
-
-	return -1
-}
-
-func diagLeft(grid [20][20]int, x, y int) int {
-	if x-3 >= 0 && y+3 < 20 {
-		return grid[x][y] * grid[x-1][y+1] * grid[x-2][y+2] * grid[x-3][y+3]
-	}
-
-	return -1
 }
