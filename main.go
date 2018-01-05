@@ -19,5 +19,7 @@ func main() {
 	// fmt.Println("Problem 12", p12())
 	// fmt.Println("Problem 13", p13())
 	// fmt.Println("Problem 14", p14())
-	fmt.Println("Problem 15", p15())
+	fmt.Println("Problem 15", p15(), "WORK IN PROGRESS")
+	// fmt.Println("Problem 16", p16())
+	fmt.Println("Problem 17", p17())
 }
