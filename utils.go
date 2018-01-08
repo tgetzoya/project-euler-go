@@ -2,6 +2,7 @@ package main
 
 import (
 	"math"
+	"math/big"
 	"sort"
 )
 
@@ -140,4 +141,20 @@ func factorial(num int64) (result int64) {
 	}
 
 	return
+}
+
+func bigFactorial(num int64) *big.Int {
+	if num < 0 {
+		return big.NewInt(-1)
+	}
+
+	result := big.NewInt(1)
+
+	if num > 0 {
+		for idx := num - 1; idx > 1; idx-- {
+			result = result.Mul(result, big.NewInt(idx))
+		}
+	}
+
+	return result
 }
