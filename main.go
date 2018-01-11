@@ -24,7 +24,11 @@ func main() {
 	// fmt.Println("Problem 17", p17())
 	// fmt.Println("Problem 18", p18("/home/tgetzoyan/p18.txt"))
 	// fmt.Println("Problem 19", p19())
-	fmt.Println("Problem 20", p20())
+	// fmt.Println("Problem 20", p20())
+	// fmt.Println("Problem 21", p21())
+	// fmt.Println("Problem 22", p22())
+	// fmt.Println("Problem 23", p23())
+	fmt.Println("Problem 24", p24())
 
 	// fmt.Println("Problem 67", p18("/home/tgetzoyan/p67.txt"))
 }

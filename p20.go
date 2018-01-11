@@ -9,7 +9,7 @@ func p20() (val int) {
 	big10 := big.NewInt(10)
 	rem := big.NewInt(0)
 
-	fact := bigFactorial(10000)
+	fact := bigFactorial(100)
 
 	for fact.Cmp(big.NewInt(1)) > 0 {
 		rem.Mod(fact, big10)

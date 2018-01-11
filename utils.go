@@ -1,8 +1,10 @@
 package main
 
 import (
+	"bufio"
 	"math"
 	"math/big"
+	"os"
 	"sort"
 )
 
@@ -18,6 +20,13 @@ func getSortedFactors(num int, includeSelf bool) (factors []int) {
 	factors = getFactors(num, includeSelf)
 	sort.Ints(factors)
 	return
+}
+
+func getProperDivisors(num int) []int {
+	divisors := getFactors(num, false)
+	divisors = append(divisors, 1)
+
+	return divisors
 }
 
 func getFactors(num int, includeSelf bool) []int {
@@ -157,4 +166,16 @@ func bigFactorial(num int64) *big.Int {
 	}
 
 	return result
+}
+
+func readFile(fileName string) (list []string) {
+	inFile, err := os.Open(fileName)
+	check(err)
+	scanner := bufio.NewScanner(inFile)
+
+	for scanner.Scan() {
+		list = append(list, scanner.Text())
+	}
+
+	return list
 }
