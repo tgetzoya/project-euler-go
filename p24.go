@@ -3,42 +3,22 @@ package main
 import (
 	"fmt"
 	"sort"
+	"strings"
+
+	"github.com/gitchander/permutation"
 )
 
-func p24() (val int) {
-	sum := 0
+func p24() string {
+	digits := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+	permutations := permutation.New(permutation.IntSlice(digits))
 
-	chrs := []string{"0", "1", "2"}
+	list := make([]string, 0)
 
-	permutations := make(map[string]bool, 0)
-
-	for idx := range chrs {
-		perms := copyStringArray(chrs)
-
-		for jdx := range perms {
-
-		}
+	for permutations.Scan() {
+		list = append(list, strings.Trim(strings.Join(strings.Split(fmt.Sprint(digits), " "), ""), "[]"))
 	}
 
-	keys := make([]string, 0)
+	sort.Strings(list)
 
-	for idx := range permutations {
-		keys = append(keys, idx)
-	}
-
-	sort.Strings(keys)
-
-	fmt.Println(keys)
-
-	return sum
-}
-
-func copyStringArray(src []string) []string {
-	dest := make([]string, 0)
-
-	for _, val := range src {
-		dest = append(dest, val)
-	}
-
-	return dest
+	return list[999999]
 }

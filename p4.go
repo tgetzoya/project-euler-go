@@ -6,7 +6,7 @@ func p4() (largestPalindome int) {
 		for jdx := 999; jdx >= 1; jdx-- {
 			num := idx * jdx
 
-			if isNumberPalindrome(num) && largestPalindome < num {
+			if IsNumberPalindrome(num) && largestPalindome < num {
 				largestPalindome = num
 			}
 		}

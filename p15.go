@@ -11,5 +11,5 @@ func binomialCoefficient(n, k int64) int64 {
 		k = hold
 	}
 
-	return factorial(n) / (factorial(k) * factorial(n-k))
+	return Factorial(n) / (Factorial(k) * Factorial(n-k))
 }

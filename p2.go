@@ -8,9 +8,9 @@ func p2() (sum int) {
 	sum += j
 
 	for j < 4000000 {
-		i,j = nextFibonacciSequence(i,j)
+		i, j = NextFibonacciSequence(i, j)
 
-		if j % 2 == 0 {
+		if j%2 == 0 {
 			sum += j
 		}
 	}

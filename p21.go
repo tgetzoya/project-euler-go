@@ -27,7 +27,7 @@ func p21() (val int) {
 func sumOfDivsors(num int) int {
 	sum := 0
 
-	facts := getFactors(num, false)
+	facts := Factors(num, false)
 	facts = append(facts, 1)
 
 	for _, val := range facts {

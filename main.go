@@ -19,7 +19,7 @@ func main() {
 	// fmt.Println("Problem 12", p12())
 	// fmt.Println("Problem 13", p13())
 	// fmt.Println("Problem 14", p14())
-	fmt.Println("Problem 15", p15(), "WORK IN PROGRESS")
+	// fmt.Println("Problem 15", p15(), "WORK IN PROGRESS")
 	// fmt.Println("Problem 16", p16())
 	// fmt.Println("Problem 17", p17())
 	// fmt.Println("Problem 18", p18("/home/tgetzoyan/p18.txt"))
@@ -28,7 +28,9 @@ func main() {
 	// fmt.Println("Problem 21", p21())
 	// fmt.Println("Problem 22", p22())
 	// fmt.Println("Problem 23", p23())
-	fmt.Println("Problem 24", p24())
+	// fmt.Println("Problem 24", p24())
+	// fmt.Println("Problem 25", p25())
+	fmt.Println("Problem 26", p26())
 
 	// fmt.Println("Problem 67", p18("/home/tgetzoyan/p67.txt"))
 }

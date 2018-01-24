@@ -8,7 +8,35 @@ import (
 	"sort"
 )
 
-func nextFibonacciSequence(num1 int, num2 int) (int, int) {
+//Fibonacci using big.Int
+func Fibonacci(term int) *big.Int {
+	if term < 1 {
+		panic("Position must be 1 or greater")
+	}
+
+	if term < 3 {
+		return big.NewInt(1)
+	}
+
+	if term == 3 {
+		return big.NewInt(2)
+	}
+
+	n := big.NewInt(1)
+	m := big.NewInt(2)
+	hold := big.NewInt(0)
+
+	for idx := 3; idx < term; idx++ {
+		hold.Set(m)
+		m = m.Add(m, n)
+		n.Set(hold)
+	}
+
+	return m
+}
+
+//NextFibonacciSequence using int
+func NextFibonacciSequence(num1 int, num2 int) (int, int) {
 	hold := num1
 	num1 = num2
 	num2 = num1 + hold
@@ -16,20 +44,23 @@ func nextFibonacciSequence(num1 int, num2 int) (int, int) {
 	return num1, num2
 }
 
-func getSortedFactors(num int, includeSelf bool) (factors []int) {
-	factors = getFactors(num, includeSelf)
+//SortedFactors gets the factors of a number and sorts them
+func SortedFactors(num int, includeSelf bool) (factors []int) {
+	factors = Factors(num, includeSelf)
 	sort.Ints(factors)
 	return
 }
 
-func getProperDivisors(num int) []int {
-	divisors := getFactors(num, false)
+//ProperDivisors is the same as SortedFactors, but includes the 1
+func ProperDivisors(num int) []int {
+	divisors := Factors(num, false)
 	divisors = append(divisors, 1)
 
 	return divisors
 }
 
-func getFactors(num int, includeSelf bool) []int {
+//Factors gets the factors for an integer
+func Factors(num int, includeSelf bool) []int {
 	factorMap := make(map[int]bool, 0)
 
 	if includeSelf {
@@ -56,7 +87,8 @@ func getFactors(num int, includeSelf bool) []int {
 	return factors
 }
 
-func getFactorCount(num int, includeSelf bool) (count int) {
+//FactorCount returns the number of factors for an integer
+func FactorCount(num int, includeSelf bool) (count int) {
 
 	if includeSelf {
 		count += 2
@@ -71,7 +103,8 @@ func getFactorCount(num int, includeSelf bool) (count int) {
 	return
 }
 
-func isPrime(num int) bool {
+//IsPrime check the integer to see if it is prime
+func IsPrime(num int) bool {
 
 	if num < 2 {
 		return false
@@ -94,7 +127,8 @@ func isPrime(num int) bool {
 	return true
 }
 
-func isNumberPalindrome(num int) bool {
+//IsNumberPalindrome checks to see if the number is a palindrome
+func IsNumberPalindrome(num int) bool {
 	digits := make([]int, 0)
 
 	for num > 10 {
@@ -114,10 +148,11 @@ func isNumberPalindrome(num int) bool {
 	return true
 }
 
-func primesInList(list []int) (primes []int) {
+//PrimesInList checks an array of ints to see if there are any prime numbers
+func PrimesInList(list []int) (primes []int) {
 
 	for _, val := range list {
-		if isPrime(val) {
+		if IsPrime(val) {
 			primes = append(primes, val)
 		}
 	}
@@ -125,7 +160,8 @@ func primesInList(list []int) (primes []int) {
 	return
 }
 
-func triangleNumber(position int) (triangleNumber int) {
+//TriangleNumber returns a number at the position in a triangle
+func TriangleNumber(position int) (triangleNumber int) {
 	for idx := 1; idx <= position; idx++ {
 		triangleNumber += idx
 	}
@@ -133,7 +169,8 @@ func triangleNumber(position int) (triangleNumber int) {
 	return
 }
 
-func factorial(num int64) (result int64) {
+//Factorial does something....
+func Factorial(num int64) (result int64) {
 
 	if num < 0 {
 		return -1
@@ -152,7 +189,8 @@ func factorial(num int64) (result int64) {
 	return
 }
 
-func bigFactorial(num int64) *big.Int {
+//BigFactorial is the same as above, but has support for extremely large numbers
+func BigFactorial(num int64) *big.Int {
 	if num < 0 {
 		return big.NewInt(-1)
 	}
@@ -168,7 +206,8 @@ func bigFactorial(num int64) *big.Int {
 	return result
 }
 
-func readFile(fileName string) (list []string) {
+//ReadFile reads a file and returns the contents as a string slice
+func ReadFile(fileName string) (list []string) {
 	inFile, err := os.Open(fileName)
 	check(err)
 	scanner := bufio.NewScanner(inFile)

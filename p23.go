@@ -6,7 +6,7 @@ func p23() (val int) {
 	isAbundant := make([]bool, 28123)
 
 	for idx := 12; idx < 28123; idx++ {
-		divisors := getProperDivisors(idx)
+		divisors := ProperDivisors(idx)
 		sumOfDivisors := 0
 
 		for _, div := range divisors {

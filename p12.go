@@ -5,9 +5,9 @@ func p12() int {
 	idx := 1
 
 	for {
-		triangleNumber := triangleNumber(idx)
+		triangleNumber := TriangleNumber(idx)
 
-		factorCount := getFactorCount(triangleNumber, true)
+		factorCount := FactorCount(triangleNumber, true)
 
 		if factorCount > 500 {
 			return triangleNumber

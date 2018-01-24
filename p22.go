@@ -24,7 +24,7 @@ func p22() (val int) {
 }
 
 func readNamesFile() (names []string) {
-	lines := readFile("/home/tgetzoyan/names.txt")
+	lines := ReadFile("/home/tgetzoyan/names.txt")
 
 	for _, line := range lines {
 		words := strings.Split(line, ",")
